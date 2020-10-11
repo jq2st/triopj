@@ -1,0 +1,21 @@
+<section>
+    <h2 class="cost-htext">Цены на обработку</h2>
+    <div class="cost-table content">
+        <div class="pricetype">
+            <ul>
+                <li (click)="selectedType = 0" [ngStyle]="{'color' : selectedType == 0 ? '#0396A6' : 'black'}">КВАРТИРА</li>
+                <li (click)="selectedType = 1" [ngStyle]="{'color' : selectedType == 1 ? '#0396A6' : 'black'}">ДОМ</li>
+                <li (click)="selectedType = 2" [ngStyle]="{'color' : selectedType == 2 ? '#0396A6' : 'black'}">ПОМЕЩЕНИЕ</li>
+            </ul>
+        </div>
+        <div class="pricelist">
+            <div class="pricelist-element" *ngFor="let element of pricelist | filter : selectedType">
+                <div class="pricelist-element__name">{{element.name}}</div>
+                <div class="pricelist-element__order">
+                    {{element.price}}
+                    <button class="button order-button" (click)="openOrderPopup(element)">Заказать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

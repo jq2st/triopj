@@ -1,0 +1,19 @@
+<div class="popup-bg">
+    <div class="popup">
+        <div class="close" (click)="closePopup()"></div>
+        <h3 class="popup-header">ЗАКАЗАТЬ ЗВОНОК</h3>
+        <form [formGroup]="form" (submit)="order(orderSubject.name, orderSubject.price)">
+            <div class="form-group">
+                <label for="">Имя</label>
+                <input type="text" placeholder="Иван" formControlName="name">
+            </div>
+            <div class="form-group">
+                <label for="">Телефон</label>
+                <input type="text" placeholder="+7 (977) 777 77 77" formControlName="phone">
+            </div>
+            <div class="right-button">
+                <button type="submit" class="button submit-button">Заказать</button>
+            </div>
+        </form>
+    </div>
+</div>

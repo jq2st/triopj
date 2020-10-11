@@ -1,0 +1,16 @@
+<section>
+    <div class="content">
+        <div class="methods-gen">
+            <div class="methods-header">
+                <h2 class="methods-htext">Методы обработки</h2>
+                <p class="methods-desc">Мы используем современное высокотехнологичное оборудование. У вредителей не будет ни шанса на выживание!</p>
+            </div>
+            <div class="methods-list">
+                <div class="method" *ngFor="let item of methodsList; let i = index">
+                    <p class="method__name"><span class="method-index">{{i + 1}}</span>{{item.name}}</p>
+                    <p>{{item.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

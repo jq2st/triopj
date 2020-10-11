@@ -1,0 +1,23 @@
+.about {
+    margin-top: 20px;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    .about__element {
+        padding: 10px 30px;
+    }
+    .about__header {
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+    }
+    .about__text {
+        text-align: center;
+    }
+}
+@media (max-width: 600px) {
+    .about {
+        grid-template-columns: 1fr;
+    }
+}

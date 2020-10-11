@@ -1,0 +1,25 @@
+.where {
+    font-size: 20px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    &__element {
+        display: flex;
+        justify-content: center;
+    }
+}
+@media (max-width: 1200px) {
+    .where {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 400px) {
+    .where {
+        grid-template-columns: 1fr;
+        &__element {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

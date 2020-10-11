@@ -1,0 +1,29 @@
+<div class="menus">
+    <div class="menu">
+        <div class="logo">Трио-бск</div>
+        <div class="main-menu">
+            <ul>
+                <li (click)="goTo('price')">Цены</li>
+                <li (click)="goTo('method')">Методы</li>
+                <li (click)="goTo('review')">Отзывы</li>
+            </ul>
+            <button class="button" (click)="popupService.isCallPopup = true">Заказать звонок</button>
+            <div class="phone">+7 (977) 777 77 77</div>
+        </div>
+        <div class="mobile-menu">
+            <div class="burger" (click)="isMobileMenu = !isMobileMenu">
+                <div class="burger__element"></div>
+                <div class="burger__element"></div>
+                <div class="burger__element"></div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu" *ngIf="isMobileMenu">
+        <ul (click)="isMobileMenu = false">
+            <li (click)="goTo('price')">Цены</li>
+            <li (click)="goTo('method')">Методы</li>
+            <li (click)="goTo('review')">Отзывы</li>
+        </ul>
+    </div>
+</div>
+
