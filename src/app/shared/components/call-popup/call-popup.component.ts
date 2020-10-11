@@ -25,8 +25,8 @@ export class CallPopupComponent implements OnInit {
     this.popupService.isCallPopup = false
   }
 
-  call(callName, callPrice) {
-    let message = 'Новая заявка с сайта. %0AПользователь: ' + this.form.value.name + ' %0AНомер телефона: ' + this.form.value.phone + ' %0AЗаказал услугу ' + callName + ' ('+ callPrice + ')'
+  backCall() {
+    let message = 'Новая заявка с сайта. %0AПользователь: ' + this.form.value.name + ' %0AНомер телефона: ' + this.form.value.phone + ' %0AЗаказал вызов дезинсектора.'
     this.http.post(`https://api.telegram.org/bot1388219777:AAEmHbmYYMA-eMIGDFFKge0UD5bb9cjOq3M/sendMessage?chat_id=-329072915&parse_mode=html&text=${message}`, 'text')
       .subscribe(n => console.log(n))
   }

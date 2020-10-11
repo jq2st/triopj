@@ -11,7 +11,7 @@
             <div class="phone">+7 (977) 777 77 77</div>
         </div>
         <div class="mobile-menu">
-            <div class="burger" (click)="isMobileMenu = !isMobileMenu">
+            <div class="burger" (click)="isMobileMenu = !isMobileMenu" [ngClass]="{'burger-close' : isMobileMenu}">
                 <div class="burger__element"></div>
                 <div class="burger__element"></div>
                 <div class="burger__element"></div>

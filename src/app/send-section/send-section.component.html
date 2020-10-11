@@ -3,7 +3,7 @@
         <div class="send">
             <div class="close" (click)="closesend()"></div>
             <h3 class="send-header">ЗАКАЗАТЬ ЗВОНОК</h3>
-            <form [formGroup]="form" (submit)="order(orderSubject.name, orderSubject.price)">
+            <form [formGroup]="form" (submit)="backCall()">
                 <div class="form-group">
                     <label for="">Имя</label>
                     <input type="text" placeholder="Иван" formControlName="name">

@@ -6,4 +6,4 @@
 <app-review-section id="review"></app-review-section>
 <app-send-section></app-send-section>
 <app-order-popup *ngIf="popupService.isOrderPopup"></app-order-popup>
-<app-call-popup *ngIf="popupService.isCallPopup"></app-call-popup>
+<app-call-popup *ngIf="popupService.isCallPopup" [@toggleHide]></app-call-popup>
