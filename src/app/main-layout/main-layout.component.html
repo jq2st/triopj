@@ -1,0 +1,9 @@
+<app-header></app-header>
+<app-cost-element id="price"></app-cost-element>
+<app-about-section></app-about-section>
+<app-methods-section id="method"></app-methods-section>
+<app-where-section></app-where-section>
+<app-review-section id="review"></app-review-section>
+<app-send-section></app-send-section>
+<app-order-popup *ngIf="popupService.isOrderPopup" [@toggleHide]></app-order-popup>
+<app-call-popup *ngIf="popupService.isCallPopup" [@toggleHide]></app-call-popup>

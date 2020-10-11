@@ -19,6 +19,8 @@ import { MethodsSectionComponent } from './methods-section/methods-section.compo
 import { WhynowSectionComponent } from './whynow-section/whynow-section.component';
 import { WhereSectionComponent } from './where-section/where-section.component';
 import { SendSectionComponent } from './send-section/send-section.component';
+import { AdminDashboardComponent } from './admin-layout/admin-dashboard/admin-dashboard.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { SendSectionComponent } from './send-section/send-section.component';
     MethodsSectionComponent,
     WhynowSectionComponent,
     WhereSectionComponent,
-    SendSectionComponent
+    SendSectionComponent,
+    AdminDashboardComponent,
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule,

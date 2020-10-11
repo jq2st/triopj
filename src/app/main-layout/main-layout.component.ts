@@ -1,11 +1,11 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
-import { PopupService } from './services/popup.service';
+import { trigger, transition, style, animate } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { PopupService } from '../services/popup.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-main-layout',
+  templateUrl: './main-layout.component.html',
+  styleUrls: ['./main-layout.component.scss'],
   animations: [
     trigger('toggleHide', [
       transition(':enter', [
@@ -18,7 +18,7 @@ import { PopupService } from './services/popup.service';
     ])
   ]
 })
-export class AppComponent {
+export class MainLayoutComponent {
 
   constructor(public popupService: PopupService) {}
 
