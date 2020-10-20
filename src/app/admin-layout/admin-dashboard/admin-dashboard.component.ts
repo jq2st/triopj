@@ -19,13 +19,22 @@ export class AdminDashboardComponent implements OnInit {
       .subscribe(n => this.priceList = n)
   }
 
+  addItem(item) {
+    this.httpService.addPriceItem(item)
+    .subscribe(n => this.priceList.push(n))
+  }
+
   editPriceItem(item) {
     this.popupService.isEditPriceItem = true
   }
 
   deletePriceItem(id) {
     this.httpService.deletePriceItem(id)
-      .subscribe()
+      .subscribe(n => {
+        this.priceList = this.priceList.filter(n => {
+          return n.id != id
+        })
+      })
   }
 
 }

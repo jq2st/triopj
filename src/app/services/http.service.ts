@@ -33,8 +33,14 @@ export class HttpService {
       }))
   }
 
-  addPriceItem(item) {
-    return this.http.post(this.dbLink + '/pricelist.json', item)
+  addPriceItem(item): Observable<pricelistItem> {
+    return this.http.post<pricelistItem>(this.dbLink + '/pricelist.json', item)
+      .pipe(map(resp => {
+        return ({
+          ...item,
+          id: resp.name
+        })
+      }))
   }
 
   editPriceItem(item) {

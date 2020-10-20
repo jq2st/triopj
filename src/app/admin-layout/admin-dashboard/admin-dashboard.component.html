@@ -14,5 +14,5 @@
         <button class="admin-button addprice-button" (click)="popupService.isAddPriceItem = true">Добавить</button>
     </div>
 </div>
-<app-admin-priceadd-popup *ngIf="popupService.isAddPriceItem"></app-admin-priceadd-popup>
+<app-admin-priceadd-popup *ngIf="popupService.isAddPriceItem" (onAdd)="addItem($event)"></app-admin-priceadd-popup>
 <app-admin-priceedit-popup *ngIf="popupService.isEditPriceItem"></app-admin-priceedit-popup>

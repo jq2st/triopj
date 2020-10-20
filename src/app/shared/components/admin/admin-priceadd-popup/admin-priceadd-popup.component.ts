@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { PopupService } from 'src/app/services/popup.service';
+import { pricelistItem } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-admin-priceadd-popup',
@@ -12,6 +13,8 @@ export class AdminPriceaddPopupComponent implements OnInit {
   
   form: FormGroup
   typeList
+
+  @Output() onAdd: EventEmitter<pricelistItem> = new EventEmitter<pricelistItem>()
 
   constructor(public popupService: PopupService, private http: HttpService) { }
 
@@ -31,8 +34,7 @@ export class AdminPriceaddPopupComponent implements OnInit {
   }
 
   addItem() {
-    this.http.addPriceItem(this.form.value)
-      .subscribe()
+    this.onAdd.emit(this.form.value)
     this.closePopup()
   }
 
