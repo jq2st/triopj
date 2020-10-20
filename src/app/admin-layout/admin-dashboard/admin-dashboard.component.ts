@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/services/http.service';
+import { PopupService } from 'src/app/services/popup.service';
+import { pricelistItem } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor() { }
+  priceList: pricelistItem[] = []
+
+  constructor(private httpService: HttpService, public popupService: PopupService) { }
 
   ngOnInit(): void {
+    this.httpService.getPriceItems()
+      .subscribe(n => this.priceList = n)
+  }
+
+  editPriceItem(item) {
+    this.popupService.isEditPriceItem = true
+  }
+
+  deletePriceItem(id) {
+    this.httpService.deletePriceItem(id)
+      .subscribe()
   }
 
 }

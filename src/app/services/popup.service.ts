@@ -12,4 +12,7 @@ export class PopupService {
   isCallPopup = false
   orderSubject: pricelistItem
 
+  isEditPriceItem = false
+  isAddPriceItem = false
+
 }

@@ -1,0 +1,27 @@
+<div class="popup-bg">
+    <div class="popup">
+        <div class="close" (click)="closePopup()"></div>
+        <h3 class="popup-header">ДОБАВИТЬ ПУНКТ</h3>
+        <form [formGroup]="form" (submit)="addItem()">
+            <div class="form-group">
+                <label for="">Название</label>
+                <input type="text" placeholder="Иван" formControlName="name">
+            </div>
+            <div class="form-group">
+                <label for="">Цена</label>
+                <input type="text" placeholder="0 руб" formControlName="price">
+            </div>
+            <div class="form-group">
+                <label for="">Тип</label>
+                <select formControlName="type">
+                    <div *ngFor="let item of typeList">
+                        <option value="item.id">{{item.name}}</option>
+                    </div>
+                </select>
+            </div>
+            <div class="right-button">
+                <button type="submit" class="button submit-button">Добавить</button>
+            </div>
+        </form>
+    </div>
+</div>

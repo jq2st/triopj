@@ -1,1 +1,18 @@
-<p>admin-dashboard works!</p>
+<div class="content">
+    <div class="price">
+        <h3>Цены</h3>
+        <div class="pricelist">
+            <div class="pricelist__item" *ngFor="let item of priceList">
+                <div class="pricelist-item" (click)="editPriceItem(item.id)">
+                    <div class="pricelist-item__name">{{item.name}}</div>
+                    <div class="pricelist-item__price">{{item.price}}</div>
+                    <div class="pricelist-item__type">{{item.type}}</div>
+                </div>
+                <button class="admin-button delete-button" (click)="deletePriceItem(item.id)">Удалить</button>
+            </div>
+        </div>
+        <button class="admin-button addprice-button" (click)="popupService.isAddPriceItem = true">Добавить</button>
+    </div>
+</div>
+<app-admin-priceadd-popup *ngIf="popupService.isAddPriceItem"></app-admin-priceadd-popup>
+<app-admin-priceedit-popup *ngIf="popupService.isEditPriceItem"></app-admin-priceedit-popup>

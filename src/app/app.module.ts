@@ -21,6 +21,8 @@ import { WhereSectionComponent } from './where-section/where-section.component';
 import { SendSectionComponent } from './send-section/send-section.component';
 import { AdminDashboardComponent } from './admin-layout/admin-dashboard/admin-dashboard.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { AdminPriceaddPopupComponent } from './shared/components/admin/admin-priceadd-popup/admin-priceadd-popup.component';
+import { AdminPriceeditPopupComponent } from './shared/components/admin/admin-priceedit-popup/admin-priceedit-popup.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
     WhereSectionComponent,
     SendSectionComponent,
     AdminDashboardComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    AdminPriceaddPopupComponent,
+    AdminPriceeditPopupComponent
   ],
   imports: [
     BrowserModule,
