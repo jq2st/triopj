@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { HttpService } from 'src/app/services/http.service';
+import { PopupService } from 'src/app/services/popup.service';
+import { pricelistItem } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-admin-priceedit-popup',
@@ -7,9 +11,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPriceeditPopupComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup
+  typeList
+  
+  @Input('editItem') editingItem: pricelistItem
 
-  ngOnInit(): void {
+  @Output() onEdit: EventEmitter<pricelistItem> = new EventEmitter<pricelistItem>()
+
+  constructor(public popupService: PopupService, private http: HttpService) { }
+
+  ngOnInit() {
+    this.form = new FormGroup({
+      name: new FormControl(this.editingItem.name),
+      price: new FormControl(this.editingItem.price),
+      type: new FormControl(this.editingItem.type)
+    })
+
+    this.http.getPriceTypes()
+      .subscribe(n => this.typeList = n)
+    
+    console.log(this.editingItem)
+  }
+
+  closePopup() {
+    this.popupService.isEditPriceItem = false
+  }
+
+  editItem() {
+    this.onEdit.emit(this.form.value)
+    this.closePopup()
   }
 
 }

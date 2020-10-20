@@ -3,7 +3,7 @@
         <h3>Цены</h3>
         <div class="pricelist">
             <div class="pricelist__item" *ngFor="let item of priceList">
-                <div class="pricelist-item" (click)="editPriceItem(item.id)">
+                <div class="pricelist-item" (click)="editPriceItem(item)">
                     <div class="pricelist-item__name">{{item.name}}</div>
                     <div class="pricelist-item__price">{{item.price}}</div>
                     <div class="pricelist-item__type">{{item.type}}</div>
@@ -15,4 +15,4 @@
     </div>
 </div>
 <app-admin-priceadd-popup *ngIf="popupService.isAddPriceItem" (onAdd)="addItem($event)"></app-admin-priceadd-popup>
-<app-admin-priceedit-popup *ngIf="popupService.isEditPriceItem"></app-admin-priceedit-popup>
+<app-admin-priceedit-popup *ngIf="popupService.isEditPriceItem" (onEdit)="editItem($event)" [editItem]="editingPriceItem"></app-admin-priceedit-popup>

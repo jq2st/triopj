@@ -10,6 +10,7 @@ import { pricelistItem } from 'src/app/shared/interfaces/interfaces';
 })
 export class AdminDashboardComponent implements OnInit {
 
+  editingPriceItem
   priceList: pricelistItem[] = []
 
   constructor(private httpService: HttpService, public popupService: PopupService) { }
@@ -25,6 +26,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   editPriceItem(item) {
+    this.editingPriceItem = item
     this.popupService.isEditPriceItem = true
   }
 
