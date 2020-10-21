@@ -1,21 +1,11 @@
 <div class="popup-bg">
     <div class="popup">
         <div class="close" (click)="closePopup()"></div>
-        <h3 class="popup-header">ДОБАВИТЬ ПУНКТ</h3>
+        <h3 class="popup-header">ДОБАВИТЬ ТИП УСЛУГИ</h3>
         <form [formGroup]="form" (submit)="addItem()">
             <div class="form-group">
                 <label for="">Название</label>
                 <input type="text" placeholder="Иван" formControlName="name">
-            </div>
-            <div class="form-group">
-                <label for="">Цена</label>
-                <input type="text" placeholder="0 руб" formControlName="price">
-            </div>
-            <div class="form-group">
-                <label for="">Тип</label>
-                <select formControlName="type">
-                    <option *ngFor="let item of typeList" [value]="item.id">{{item.name}}</option>
-                </select>
             </div>
             <div class="right-button">
                 <button type="submit" class="button submit-button" [disabled]="form.invalid">Добавить</button>

@@ -5,32 +5,26 @@ import { PopupService } from 'src/app/services/popup.service';
 import { pricelistItem, PricelistTypeItem } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-admin-priceadd-popup',
-  templateUrl: './admin-priceadd-popup.component.html',
-  styleUrls: ['./admin-priceadd-popup.component.scss']
+  selector: 'app-admin-pricetypeadd-popup',
+  templateUrl: './admin-pricetypeadd-popup.component.html',
+  styleUrls: ['./admin-pricetypeadd-popup.component.scss']
 })
-export class AdminPriceaddPopupComponent implements OnInit {
-  
-  form: FormGroup
-  typeList: PricelistTypeItem[]
+export class AdminPricetypeaddPopupComponent implements OnInit {
 
-  @Output() onAdd: EventEmitter<pricelistItem> = new EventEmitter<pricelistItem>()
+  form: FormGroup
+
+  @Output() onAdd: EventEmitter<PricelistTypeItem> = new EventEmitter<PricelistTypeItem>()
 
   constructor(public popupService: PopupService, private http: HttpService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required),
-      type: new FormControl('', Validators.required)
     })
-
-    this.http.getPriceTypes()
-      .subscribe(n => this.typeList = n)
   }
 
   closePopup() {
-    this.popupService.isAddPriceItem = false
+    this.popupService.isAddPriceTypeItem = false
   }
 
   addItem() {

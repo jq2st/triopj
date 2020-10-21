@@ -23,6 +23,7 @@ import { AdminDashboardComponent } from './admin-layout/admin-dashboard/admin-da
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { AdminPriceaddPopupComponent } from './shared/components/admin/admin-priceadd-popup/admin-priceadd-popup.component';
 import { AdminPriceeditPopupComponent } from './shared/components/admin/admin-priceedit-popup/admin-priceedit-popup.component';
+import { AdminPricetypeaddPopupComponent } from './shared/components/admin/admin-pricetypeadd-popup/admin-pricetypeadd-popup.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AdminPriceeditPopupComponent } from './shared/components/admin/admin-pr
     AdminDashboardComponent,
     MainLayoutComponent,
     AdminPriceaddPopupComponent,
-    AdminPriceeditPopupComponent
+    AdminPriceeditPopupComponent,
+    AdminPricetypeaddPopupComponent
   ],
   imports: [
     BrowserModule,

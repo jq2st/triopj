@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { pricelistItem } from '../shared/interfaces/interfaces';
+import { pricelistItem, PricelistTypeItem } from '../shared/interfaces/interfaces';
 import { map } from 'rxjs/operators'
 
 @Injectable({
@@ -16,8 +16,24 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  getPriceTypes() {
-    return this.http.get(this.dbLink + '/pricetypes.json')
+  getPriceTypes(): Observable<PricelistTypeItem[]> {
+    return this.http.get<PricelistTypeItem[]>(this.dbLink + '/pricetypes.json')
+      .pipe(map(resp => {
+        return Object
+          .keys(resp)
+          .map(key => ({
+            ...resp[key],
+            id: key
+          }))
+      }))
+  }
+
+  addPriceType(item): Observable<PricelistTypeItem> {
+    return this.http.post<PricelistTypeItem>(this.dbLink + '/pricetypes.json', item)
+  }
+
+  deletePriceType(id): Observable<PricelistTypeItem> {
+    return this.http.delete<PricelistTypeItem>(this.dbLink + '/pricetypes/' + id + '.json')
   }
   
 

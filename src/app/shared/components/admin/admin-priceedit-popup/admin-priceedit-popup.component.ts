@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { PopupService } from 'src/app/services/popup.service';
 import { pricelistItem } from 'src/app/shared/interfaces/interfaces';
@@ -22,9 +22,9 @@ export class AdminPriceeditPopupComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      name: new FormControl(this.editingItem.name),
-      price: new FormControl(this.editingItem.price),
-      type: new FormControl(this.editingItem.type)
+      name: new FormControl(this.editingItem.name, Validators.required),
+      price: new FormControl(this.editingItem.price, Validators.required),
+      type: new FormControl(this.editingItem.type, Validators.required)
     })
 
     this.http.getPriceTypes()

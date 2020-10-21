@@ -6,7 +6,7 @@ import { pricelistItem } from '../shared/interfaces/interfaces';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: pricelistItem[], type: number): pricelistItem[] {
+  transform(value: pricelistItem[], type: string): pricelistItem[] {
     value = value.filter(item => item.type == type)
     return value;
   }
