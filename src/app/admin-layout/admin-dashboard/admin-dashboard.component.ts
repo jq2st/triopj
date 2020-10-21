@@ -11,8 +11,10 @@ import { pricelistItem, PricelistTypeItem } from 'src/app/shared/interfaces/inte
 export class AdminDashboardComponent implements OnInit {
 
   editingPriceItem
+  editingMethodItem
   priceTypeList: PricelistTypeItem[] = []
   priceList: pricelistItem[] = []
+  methodList = []
 
   constructor(private httpService: HttpService, public popupService: PopupService) { }
 
@@ -36,6 +38,9 @@ export class AdminDashboardComponent implements OnInit {
     
     this.httpService.getPriceItems()
       .subscribe(n => this.priceList = n)
+
+    this.httpService.getMethods()
+      .subscribe(n => this.methodList = n)
 
   }
 
@@ -79,6 +84,37 @@ export class AdminDashboardComponent implements OnInit {
     this.httpService.deletePriceItem(id)
       .subscribe(n => {
         this.priceList = this.priceList.filter(n => {
+          return n.id != id
+        })
+      })
+  }
+
+
+  editMethod(item) {
+    this.httpService.editMethod(item)
+      .subscribe(n => {
+        this.methodList.forEach((x, i) => {
+          if (x.id == n.id) {
+            this.methodList[i] = n
+          }
+        })
+      })
+  }
+
+  editMethodItem(item) {
+    this.editingMethodItem = item
+    this.popupService.isEditMethodItem = true
+  }
+
+  addMethod(item) {
+    this.httpService.addMethod(item)
+      .subscribe(n => this.methodList.push(n))
+  }
+
+  deleteMethod(id) {
+    this.httpService.deleteMethod(id)
+      .subscribe(n => {
+        this.methodList = this.methodList.filter(n => {
           return n.id != id
         })
       })

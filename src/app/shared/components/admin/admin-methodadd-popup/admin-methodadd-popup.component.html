@@ -1,0 +1,19 @@
+<div class="popup-bg">
+    <div class="popup">
+        <div class="close" (click)="closePopup()"></div>
+        <h3 class="popup-header">ДОБАВИТЬ МЕТОД</h3>
+        <form [formGroup]="form" (submit)="addItem()">
+            <div class="form-group">
+                <label for="">Название</label>
+                <input type="text" placeholder="Название метода" formControlName="name">
+            </div>
+            <div class="form-group">
+                <label for="">Описание</label>
+                <input type="text" placeholder="Описание метода" formControlName="description">
+            </div>
+            <div class="right-button">
+                <button type="submit" class="button submit-button" [disabled]="form.invalid">Добавить</button>
+            </div>
+        </form>
+    </div>
+</div>

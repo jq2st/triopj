@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { pricelistItem, PricelistTypeItem } from '../shared/interfaces/interfaces';
+import { MethodItem, pricelistItem, PricelistTypeItem } from '../shared/interfaces/interfaces';
 import { map } from 'rxjs/operators'
 
 @Injectable({
@@ -71,6 +71,37 @@ export class HttpService {
 
   deletePriceItem(id) {
     return this.http.delete(this.dbLink + '/pricelist/' + id + '.json')
+  }
+
+
+  getMethods(): Observable<MethodItem[]> {
+    return this.http.get<MethodItem[]>(this.dbLink + '/methods.json')
+      .pipe(map(resp => {
+        return Object
+          .keys(resp)
+          .map(key => ({
+            ...resp[key],
+            id: key
+          }))
+      }))
+  }
+
+  addMethod(item): Observable<MethodItem> {
+    return this.http.post<MethodItem>(this.dbLink + '/methods.json', item)
+      .pipe(map(resp => {
+        return ({
+          ...item,
+          id: resp.name
+        })
+      }))
+  }
+
+  editMethod(item): Observable<MethodItem> {
+    return this.http.put<MethodItem>(this.dbLink + '/methods/' + item.id + '.json', item)
+  }
+
+  deleteMethod(id) {
+    return this.http.delete(this.dbLink + '/methods/' + id + '.json')
   }
 
 }

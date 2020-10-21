@@ -15,5 +15,7 @@ export class PopupService {
   isEditPriceItem = false
   isAddPriceItem = false
   isAddPriceTypeItem = false
+  isAddMethodItem = false
+  isEditMethodItem = false
 
 }

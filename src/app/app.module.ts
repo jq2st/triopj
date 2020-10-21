@@ -25,6 +25,9 @@ import { AdminPriceaddPopupComponent } from './shared/components/admin/admin-pri
 import { AdminPriceeditPopupComponent } from './shared/components/admin/admin-priceedit-popup/admin-priceedit-popup.component';
 import { AdminPricetypeaddPopupComponent } from './shared/components/admin/admin-pricetypeadd-popup/admin-pricetypeadd-popup.component';
 import { Id2namePipe } from './pipes/id2name.pipe';
+import { AdminMethodaddPopupComponent } from './shared/components/admin/admin-methodadd-popup/admin-methodadd-popup.component';
+import { AdminMethodeditPopupComponent } from './shared/components/admin/admin-methodedit-popup/admin-methodedit-popup.component';
+import { AdminLoginPageComponent } from './admin-login-page/admin-login-page.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { Id2namePipe } from './pipes/id2name.pipe';
     AdminPriceaddPopupComponent,
     AdminPriceeditPopupComponent,
     AdminPricetypeaddPopupComponent,
-    Id2namePipe
+    Id2namePipe,
+    AdminMethodaddPopupComponent,
+    AdminMethodeditPopupComponent,
+    AdminLoginPageComponent
   ],
   imports: [
     BrowserModule,

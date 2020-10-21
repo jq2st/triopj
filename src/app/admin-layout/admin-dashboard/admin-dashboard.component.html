@@ -22,9 +22,24 @@
             </div>
             <button class="admin-button addprice-button" (click)="popupService.isAddPriceItem = true">Добавить</button>
         </div>
+        <div class="admin-part">
+            <h3>Методы</h3>
+            <div class="methods">
+                <div class="methods__item" *ngFor="let item of methodList">
+                    <div class="methods-item" (click)="editMethodItem(item)">
+                        <div class="methods-item__name">{{item.name}}</div>
+                        <div class="pricelist-item__description">{{item.description}}</div>
+                    </div>
+                    <button class="admin-button delete-button" (click)="deleteMethod(item.id)">Удалить</button>
+                </div>
+            </div>
+            <button class="admin-button addprice-button" (click)="popupService.isAddMethodItem = true">Добавить</button>
+        </div>
     </div>
 </div>
  
 <app-admin-priceadd-popup *ngIf="popupService.isAddPriceItem" (onAdd)="addItem($event)"></app-admin-priceadd-popup>
 <app-admin-priceedit-popup *ngIf="popupService.isEditPriceItem" (onEdit)="editItem($event)" [editItem]="editingPriceItem"></app-admin-priceedit-popup>
 <app-admin-pricetypeadd-popup *ngIf="popupService.isAddPriceTypeItem" (onAdd)="addPriceType($event)"></app-admin-pricetypeadd-popup>
+<app-admin-methodadd-popup *ngIf="popupService.isAddMethodItem" (onAdd)="addMethod($event)"></app-admin-methodadd-popup>
+<app-admin-methodedit-popup *ngIf="popupService.isEditMethodItem" (onEdit)="editMethod($event)" [editItem]="editingMethodItem"></app-admin-methodedit-popup>

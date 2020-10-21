@@ -9,3 +9,9 @@ export interface PricelistTypeItem {
     id?: string,
     name: string,
 }
+
+export interface MethodItem {
+    id?: string,
+    name: string,
+    description: string,
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../services/http.service';
+import { MethodItem } from '../shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-methods-section',
@@ -7,16 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MethodsSectionComponent implements OnInit {
 
-  methodsList = []
+  methodsList: MethodItem[] = []
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
-    this.methodsList = [
-      {name: 'Холодный туман', description: 'Производимый туман состоит из мельчайших капель пара с инсектицидом. Они намного мельче, чем производимые опрыскивателем. По этой причине смесь капелек с воздухом равномерно оседает на потолке, мебели, панелях и попадает в недоступные места.'},
-      {name: 'Горячий туман', description: 'Производимый туман состоит из мельчайших капель пара с инсектицидом. Они намного мельче, чем производимые опрыскивателем. По этой причине смесь капелек с воздухом равномерно оседает на потолке, мебели, панелях и попадает в недоступные места.'},
-      {name: 'Комплексная обработка', description: 'Производимый туман состоит из мельчайших капель пара с инсектицидом. Они намного мельче, чем производимые опрыскивателем. По этой причине смесь капелек с воздухом равномерно оседает на потолке, мебели, панелях и попадает в недоступные места.'},
-    ]
+    this.httpService.getMethods()
+      .subscribe(n => this.methodsList = n)
   }
 
 }
