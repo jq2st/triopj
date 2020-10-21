@@ -1,27 +1,30 @@
-<div class="content">
-    <div class="price">
-        <h3>Разделы услуг</h3>
-        <div class="typelist">
-            <div class="typelist__item" *ngFor="let item of priceTypeList">
-                <span>{{item.name}}</span>
-                <button class="admin-button delete-button" (click)="deletePriceTypeItem(item.id)">Удалить</button>
-            </div>
-        </div>
-        <button class="admin-button addprice-button" (click)="popupService.isAddPriceTypeItem = true">Добавить</button>
-        <h3>Цены</h3>
-        <div class="pricelist">
-            <div class="pricelist__item" *ngFor="let item of priceList">
-                <div class="pricelist-item" (click)="editPriceItem(item)">
-                    <div class="pricelist-item__name">{{item.name}}</div>
-                    <div class="pricelist-item__price">{{item.price}}</div>
-                    <div class="pricelist-item__type">{{item.type}}</div>
+<div class="bg">
+    <div class="content">
+        <div class="price admin-part">
+            <h3>Разделы услуг</h3>
+            <div class="typelist">
+                <div class="typelist__item" *ngFor="let item of priceTypeList">
+                    <span>{{item.name}}</span>
+                    <button class="admin-button delete-button" (click)="deletePriceType(item.id)">Удалить</button>
                 </div>
-                <button class="admin-button delete-button" (click)="deletePriceItem(item.id)">Удалить</button>
             </div>
+            <button class="admin-button addprice-button" (click)="popupService.isAddPriceTypeItem = true">Добавить</button>
+            <h3>Цены</h3>
+            <div class="pricelist">
+                <div class="pricelist__item" *ngFor="let item of priceList">
+                    <div class="pricelist-item" (click)="editPriceItem(item)">
+                        <div class="pricelist-item__name">{{item.name}}</div>
+                        <div class="pricelist-item__price">{{item.price}}</div>
+                        <div class="pricelist-item__type">{{item.type | id2name : priceTypeList}}</div>
+                    </div>
+                    <button class="admin-button delete-button" (click)="deletePriceItem(item.id)">Удалить</button>
+                </div>
+            </div>
+            <button class="admin-button addprice-button" (click)="popupService.isAddPriceItem = true">Добавить</button>
         </div>
-        <button class="admin-button addprice-button" (click)="popupService.isAddPriceItem = true">Добавить</button>
     </div>
 </div>
+ 
 <app-admin-priceadd-popup *ngIf="popupService.isAddPriceItem" (onAdd)="addItem($event)"></app-admin-priceadd-popup>
 <app-admin-priceedit-popup *ngIf="popupService.isEditPriceItem" (onEdit)="editItem($event)" [editItem]="editingPriceItem"></app-admin-priceedit-popup>
 <app-admin-pricetypeadd-popup *ngIf="popupService.isAddPriceTypeItem" (onAdd)="addPriceType($event)"></app-admin-pricetypeadd-popup>

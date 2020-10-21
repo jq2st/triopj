@@ -3,13 +3,11 @@
     <div class="cost-table content">
         <div class="pricetype">
             <ul>
-                <li (click)="selectedType = 0" [ngStyle]="{'color' : selectedType == 0 ? '#0396A6' : 'black'}">КВАРТИРА</li>
-                <li (click)="selectedType = 1" [ngStyle]="{'color' : selectedType == 1 ? '#0396A6' : 'black'}">ДОМ</li>
-                <li (click)="selectedType = 2" [ngStyle]="{'color' : selectedType == 2 ? '#0396A6' : 'black'}">ПОМЕЩЕНИЕ</li>
+                <li *ngFor="let item of priceTypeList" (click)="selectedType = item.id" [ngStyle]="{'color' : selectedType == item.id ? '#0396A6' : 'black'}">{{item.name}}</li>
             </ul>
         </div>
         <div class="pricelist">
-            <div class="pricelist-element" *ngFor="let element of pricelist | filter : selectedType">
+            <div class="pricelist-element" *ngFor="let element of priceList | filter : selectedType">
                 <div class="pricelist-element__name">{{element.name}}</div>
                 <div class="pricelist-element__order">
                     {{element.price}}

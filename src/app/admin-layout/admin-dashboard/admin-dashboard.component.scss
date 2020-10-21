@@ -1,0 +1,52 @@
+h3 {
+    margin: 30px 0 10px 0;
+}
+.bg {
+    min-height: 100vh;
+    background-color: rgba(193, 251, 255, 0.384);
+    padding: 20px 0;
+}
+.admin-part {
+    padding: 50px 30px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+}
+.typelist {
+    display: flex;
+}
+.typelist__item {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+    button {
+        margin-left: 10px;
+    }
+}
+.pricelist__item {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.pricelist-item {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    div {
+        flex: 1 1 0;
+    }
+}
+.admin-button {
+    margin-top: 20px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 0;
+}
+.delete-button {
+    margin: 0;
+    padding: 5px 15px;
+    border: 0;
+    background-color: tomato;
+    color: white;
+    border-radius: 50px;
+}

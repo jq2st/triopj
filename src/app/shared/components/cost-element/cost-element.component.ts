@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/services/http.service';
 import { PopupService } from 'src/app/services/popup.service';
-import { pricelistItem } from '../../interfaces/interfaces';
+import { pricelistItem, PricelistTypeItem } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-cost-element',
@@ -9,27 +10,20 @@ import { pricelistItem } from '../../interfaces/interfaces';
 })
 export class CostElementComponent implements OnInit {
 
-  selectedType: number = 0
-  pricelist: pricelistItem[] = []
+  selectedType: string
+  priceList: pricelistItem[] = []
+  priceTypeList: PricelistTypeItem[]
 
-  constructor(private popupService: PopupService) { }
+  constructor(private popupService: PopupService, private httpService: HttpService) { }
 
   ngOnInit() {
-    this.pricelist = [
-      {name: "Комната", price: "800 руб", type: 0},
-      {name: "Квартира", price: "1000 руб", type: 0},
-      {name: "Комната", price: "1800 руб", type: 0},
-      {name: "Квартира", price: "2000 руб", type: 0},
-      {name: "Дом", price: "800 руб", type: 1},
-      {name: "Дом 2", price: "1000 руб", type: 1},
-      {name: "Дом 3", price: "1100 руб", type: 1},
-      {name: "Дом 4", price: "11000 руб", type: 1},
-      {name: "200 квм", price: "800 руб", type: 2},
-      {name: "300 квм", price: "1000 руб", type: 2},
-      {name: "200 квм", price: "8000 руб", type: 2},
-      {name: "300 квм", price: "10000 руб", type: 2},
-      {name: "300 квм", price: "10000 руб", type: 2}
-    ]
+    this.httpService.getPriceTypes()
+      .subscribe(n =>  {
+        this.selectedType = n[0].id
+        this.priceTypeList = n
+      })
+    this.httpService.getPriceItems()
+      .subscribe(n => this.priceList = n)
   }
 
   openOrderPopup(item) {

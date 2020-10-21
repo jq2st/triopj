@@ -29,8 +29,6 @@ export class AdminPriceeditPopupComponent implements OnInit {
 
     this.http.getPriceTypes()
       .subscribe(n => this.typeList = n)
-    
-    console.log(this.editingItem)
   }
 
   closePopup() {
@@ -38,7 +36,8 @@ export class AdminPriceeditPopupComponent implements OnInit {
   }
 
   editItem() {
-    this.onEdit.emit(this.form.value)
+    let item = {...this.form.value, id: this.editingItem.id}
+    this.onEdit.emit(item)
     this.closePopup()
   }
 

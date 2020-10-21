@@ -24,6 +24,7 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { AdminPriceaddPopupComponent } from './shared/components/admin/admin-priceadd-popup/admin-priceadd-popup.component';
 import { AdminPriceeditPopupComponent } from './shared/components/admin/admin-priceedit-popup/admin-priceedit-popup.component';
 import { AdminPricetypeaddPopupComponent } from './shared/components/admin/admin-pricetypeadd-popup/admin-pricetypeadd-popup.component';
+import { Id2namePipe } from './pipes/id2name.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AdminPricetypeaddPopupComponent } from './shared/components/admin/admin
     MainLayoutComponent,
     AdminPriceaddPopupComponent,
     AdminPriceeditPopupComponent,
-    AdminPricetypeaddPopupComponent
+    AdminPricetypeaddPopupComponent,
+    Id2namePipe
   ],
   imports: [
     BrowserModule,

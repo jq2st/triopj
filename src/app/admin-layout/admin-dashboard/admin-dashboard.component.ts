@@ -17,20 +17,42 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private httpService: HttpService, public popupService: PopupService) { }
 
   ngOnInit(): void {
+    // this.httpService.getPriceTypes()
+    //   .subscribe(n => {
+    //     this.priceTypeList = n
+    //     this.httpService.getPriceItems()
+    //       .subscribe(i => {
+    //         this.priceList = i.map(x => {
+    //           let q = n.find(qur => qur.id = x.type)
+    //           return ({
+    //             ...x,
+    //             type: q.name
+    //           })
+    //         })
+    //       })
+    //   })
     this.httpService.getPriceTypes()
       .subscribe(n => this.priceTypeList = n)
+    
     this.httpService.getPriceItems()
       .subscribe(n => this.priceList = n)
+
   }
 
   addPriceType(item) {
     this.httpService.addPriceType(item)
-      .subscribe(n => console.log(n))
+      .subscribe(n => this.priceTypeList.push(n))
   }
 
-  deletePriceType() {
-
+  deletePriceType(id) {
+    this.httpService.deletePriceType(id)
+      .subscribe(n => {
+        this.priceTypeList = this.priceTypeList.filter(n => {
+          return n.id != id
+        })
+      })
   }
+
 
   addItem(item) {
     this.httpService.addPriceItem(item)
@@ -40,6 +62,17 @@ export class AdminDashboardComponent implements OnInit {
   editPriceItem(item) {
     this.editingPriceItem = item
     this.popupService.isEditPriceItem = true
+  }
+
+  editItem(item) {
+    this.httpService.editPriceItem(item)
+      .subscribe(n => {
+        this.priceList.forEach((x, i) => {
+          if (x.id == n.id) {
+            this.priceList[i] = n
+          }
+        })
+      })
   }
 
   deletePriceItem(id) {

@@ -30,6 +30,12 @@ export class HttpService {
 
   addPriceType(item): Observable<PricelistTypeItem> {
     return this.http.post<PricelistTypeItem>(this.dbLink + '/pricetypes.json', item)
+    .pipe(map(resp => {
+      return ({
+        ...item,
+        id: resp.name
+      })
+    }))
   }
 
   deletePriceType(id): Observable<PricelistTypeItem> {
@@ -59,8 +65,8 @@ export class HttpService {
       }))
   }
 
-  editPriceItem(item) {
-    return this.http.put(this.dbLink + '/pricelist/' + item.id + '.json', item)
+  editPriceItem(item): Observable<pricelistItem> {
+    return this.http.put<pricelistItem>(this.dbLink + '/pricelist/' + item.id + '.json', item)
   }
 
   deletePriceItem(id) {
