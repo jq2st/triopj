@@ -28,6 +28,7 @@ import { Id2namePipe } from './pipes/id2name.pipe';
 import { AdminMethodaddPopupComponent } from './shared/components/admin/admin-methodadd-popup/admin-methodadd-popup.component';
 import { AdminMethodeditPopupComponent } from './shared/components/admin/admin-methodedit-popup/admin-methodedit-popup.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     BrowserAnimationsModule,
     IvyCarouselModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,13 +1,13 @@
 <div class="bg">
     <div class="login">
-        <form>
+        <form [formGroup]="form" (submit)="login()">
             <div class="form-part">
-                <label">Логин</label>
-                <input type="text">
+                <label>Логин</label>
+                <input type="text" formControlName="email">
             </div>
             <div class="form-part">
                 <label>Пароль</label>
-                <input type="password">
+                <input type="password" formControlName="password">
             </div>
             <button type="submit">Войти</button>
         </form>
